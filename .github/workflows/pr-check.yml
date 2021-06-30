@@ -1,0 +1,21 @@
+name: 'PR Name Check'
+on:
+  pull_request:
+    types:
+      # Check title when opened.
+      - opened
+      # Check title when new commits are pushed.
+      # Required to use as a status check.
+      - synchronize
+      - edited
+      - reopened
+
+jobs:
+  check_pr_title:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: deepakputhraya/action-pr-title@master
+        with:
+          # Based on .github/semantic.yml and allows commits with anything inside prefix(<anything here passes>)
+          allowed_prefixes: 'build,ci,docs,feat,fix,perf,refactor,test'
+          github_token: ${{ github.token }}
