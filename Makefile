@@ -8,7 +8,7 @@ create-release-branch: ## Create release branch on main
 	git pull
 	git checkout main
 	git pull
-	git checkout -b release-`date +%Y-%m-%d`
+	git checkout -b release-`date +%Y-%m-%d-%s`
 	echo "Run `git merge origin/dev`. If you have conflicts, resolve them, then git push and create a PR"
 
 help:
